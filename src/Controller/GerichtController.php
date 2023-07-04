@@ -65,6 +65,10 @@ class GerichtController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $gericht = $gr->find($id);
+
+        $bild = $gericht->getBild();
+        unlink($this->getParameter('bilder_ordner') . '/' . $bild);
+
         $em->remove($gericht);
         $em->flush();
 

@@ -14,14 +14,13 @@ class HomeController extends AbstractController
     {
 
         $gerichte = $gr->findAll();
+        $num = count($gerichte) === 1 ? 1 : 2;
 
         if ($gerichte) {
-            $zufall = array_rand($gerichte, 2);
-            $gerichte = [
-                $gerichte[$zufall[0]],
-                $gerichte[$zufall[1]]
-            ];
+            $zufall = array_rand($gerichte, $num);
+            $gerichte = array_intersect_key($gerichte, array_flip((array)$zufall));
         }
+
 
 
         return $this->render('home/index.html.twig', [
