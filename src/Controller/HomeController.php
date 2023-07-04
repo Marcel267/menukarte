@@ -15,13 +15,17 @@ class HomeController extends AbstractController
 
         $gerichte = $gr->findAll();
 
-        $zufall = array_rand($gerichte, 2);
-
+        if ($gerichte) {
+            $zufall = array_rand($gerichte, 2);
+            $gerichte = [
+                $gerichte[$zufall[0]],
+                $gerichte[$zufall[1]]
+            ];
+        }
 
 
         return $this->render('home/index.html.twig', [
-            'gericht1' => $gerichte[$zufall[0]],
-            'gericht2' => $gerichte[$zufall[1]],
+            'random_gerichte' => $gerichte
         ]);
     }
 }

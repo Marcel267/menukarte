@@ -6,47 +6,30 @@
 <!-- Hero section -->
 <section class="hero-section">
     <div class="hero-slider owl-carousel">
+        {% if random_gerichte %}
+        {% for gericht in random_gerichte %}
         <div class="hs-item">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="hs-text">
-                            <h2><span>{{gericht1.name}}</span>!</h2>
-                            <p>Probieren Sie jetzt, {{gericht1.beschreibung}} für nur EUR {{gericht1.preis}}!
+                            <h2><span>{{gericht.name}}</span>!</h2>
+                            <p>Probieren Sie jetzt, {{gericht.beschreibung}} für nur EUR {{gericht.preis}}!
                                 Exklusiv als Gericht des Tages. </p>
                             <a href="{{path('app_menu')}}" class="site-btn">Menukarte</a>
-                            <a href="{{path('app_bestellen', {id: gericht1.id})}}" class="site-btn sb-c2">Bestellen</a>
+                            <a href="{{path('app_bestellen', {id: gericht.id})}}" class="site-btn sb-c2">Bestellen</a>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="hr-img">
-                            <img class="rounded" src="{{asset('bilder/' ~ gericht1.bild)}}">
+                            <img class="rounded" src="{{asset('bilder/' ~ gericht.bild)}}">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="hs-item">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="hs-text">
-                            <h2><span>{{gericht2.name}}</span>!</h2>
-                            <p>Probieren Sie jetzt, {{gericht2.beschreibung}} für nur EUR {{gericht2.preis}}!
-                                Exklusiv als Gericht des Tages. </p>
-                            <a href="{{path('app_menu')}}" class="site-btn">Menukarte</a>
-                            <a href="{{path('app_bestellen', {id: gericht2.id})}}" class="site-btn sb-c2">Bestellen</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="hr-img">
-                            <img class="rounded" src="{{asset('bilder/' ~ gericht2.bild)}}">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        {% endfor %}
+        {% endif %}
 </section>
 <!-- Hero section end -->
 {% endblock %}
