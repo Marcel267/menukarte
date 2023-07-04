@@ -1,0 +1,35 @@
+Entity create/update:
+	php bin/console make:entity
+
+Entitys getter/setter ergänzen:
+	php bin/console make:entity --regenerate
+	(für alle dann einfach return)
+
+datenbank updaten:
+	php bin/console doctrine:schema:update --force
+vorher die commandos anzeigen lassen:
+	php bin/console doctrine:schema:update --dump-sql
+
+alle routen anzeigen lassen:
+	php bin/console debug:router
+
+alle container anzeigen lassen:
+	php bin/console debug:container
+
+
+Startup:
+________
+
+symfony proxy:start
+
+symfony server:start --daemon --dir=C:\xampp\htdocs\code\menukarte
+
+
+Was ich noch anschauen muss:
+____________________________
+
+1. Error handling. The end-user should not see the default Symfony error when he does something wrong (for example: enters a negative price, enters a price with four digits after comma, or, what really produces a nasty error, enters a different password than the password repetition). A very slight suggestion how to handle this had appeared no sooner than in 38. Services and Validation and still wasn't covered. It's not enough.
+
+2. The limitations that only opened orders may be deleted, or only pre-defined statuses may be set, worked only if a user didn't manipulate the URL manually which is quite easy. Checking this in the controller is missing as well as showing us how to use hardcoded dictionaries or enum types instead of varchars which are not suitable for something like status. A status should be a hardcoded dictionary or an enum to show us something different than a database table which was covered by categories, and both statuses and categories should be iterated through instead of hardcoding them in twig templates to also show how to minimize the work in case of adding a new category.
+
+3. Passwordreset via E-Mail for example
