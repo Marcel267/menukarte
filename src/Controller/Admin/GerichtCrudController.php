@@ -7,7 +7,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class GerichtCrudController extends AbstractCrudController
@@ -23,7 +22,7 @@ class GerichtCrudController extends AbstractCrudController
         return [
             TextField::new('name'),
             ImageField::new('bild')->setUploadDir('public/bilder/'),
-            TextEditorField::new('beschreibung'),
+            TextField::new('beschreibung'),
             NumberField::new('preis'),
             AssociationField::new('kategorie'),
         ];
